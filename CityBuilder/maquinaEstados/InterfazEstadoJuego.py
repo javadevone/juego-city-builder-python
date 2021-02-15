@@ -7,5 +7,5 @@ class InterfazEstadoJuego(ABC):
         pass
 
     @abstractmethod
-    def dibujar(self, lienzo):
+    def dibujar(self):
         pass

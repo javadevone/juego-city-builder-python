@@ -14,6 +14,6 @@ class MaquinaEstados:
         if self.estadoActual is None:
             raise Exception("No se ha podido iniciar el juego. El estado del juego " + str(nuevoEstado) + " no es válido.")
 
-    def iterar(self, lienzo):
+    def iterar(self):
         self.estadoActual.actualizar()
-        self.estadoActual.dibujar(lienzo)
+        self.estadoActual.dibujar()
