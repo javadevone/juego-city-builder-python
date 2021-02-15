@@ -2,6 +2,9 @@ from tkinter import Tk, Canvas
 import time
 import sys
 
+from maquinaEstados.MaquinaEstados import MaquinaEstados
+from maquinaEstados.EnumEstadosJuego import EnumEstadosJuego
+
 class Ventana:
     def __init__(self, ancho, alto):
         self.ancho = ancho
@@ -16,7 +19,7 @@ class Ventana:
         self.aps = 0
         self.referenciaInicial = time.perf_counter_ns()
 
-        #maquina de estados
+        self.me = MaquinaEstados(EnumEstadosJuego.ESTADO_JUEGO, self.lienzo)
         
         self.ventana.after(0, self.iterar)
 
@@ -33,7 +36,7 @@ class Ventana:
         referenciaActual = time.perf_counter_ns()
         nsAcumulados = referenciaActual - self.referenciaInicial
 
-        #actualizamos máquina de estados
+        self.me.iterar()
 
         if nsAcumulados / 1000000 >= 1000:
             print("APS: " + str(self.aps))
